@@ -21,13 +21,17 @@
         </div>
         <div class="tasks">
             <ul v-if="(tasks.length > 0)">
-                <li v-for="(task, index) in tasks" class="task" v-bind:class="String(task.done)" @click="changeStatus(task, index)">
+                <li v-for="(task, index) in tasks" class="task" v-bind:class="String(task.done)">
                     <span>
-                        <span v-if="(task.done == false)" class="status-task">FALSO</span>
-                        <span v-else>VERO</span>
-                        <span class="title-task">{{task.title.toUpperCase()}}</span>
+                        <span v-if="(task.done == false)" class="status-task"  @click="changeStatus(task, index)">
+                            <i class="fas fa-check"></i>
+                        </span>
+                        <span v-else class="status-task">
+                            <i class="fas fa-times"  @click="changeStatus(task, index)"></i>
+                        </span>
+                        <span class="title-task" @click="changeStatus(task, index)">{{task.title.toUpperCase()}}</span>
                     </span>
-                        <i class="fas fa-times" @click="removeTask(index)"></i>
+                        <span class="delete" @click="removeTask(index)">DELETE</span>
                 </li>
                 
             </ul>

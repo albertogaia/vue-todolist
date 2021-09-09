@@ -30,8 +30,9 @@ const app = new Vue({
             }
         },
         removeTask(i){
-            confirm('Sicuro di voler cancellare?')
-            this.tasks.splice(i, 1);
+            if(confirm('Sicuro di voler cancellare?') == true){
+                this.tasks.splice(i, 1)
+            }
         },
         changeStatus(element, i){
             // this.tasks.done = true;
