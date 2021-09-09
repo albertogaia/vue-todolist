@@ -14,16 +14,18 @@ body{font-family: Arial, Helvetica, sans-serif;}
 .to-do-list {display: flex; flex-direction: column; align-items: center;}
 .to-do-list .img {width: 400px; margin-bottom: 15px;}
 .to-do-list img{ width: 100%;}
-.input-user > button {
+.input-user > button, .filterSelection > select {
     cursor: pointer;
     font-weight: 500;
     padding: 10px 20px;
     border-radius: 0px;
     border: none;
     outline: none;
+    background-color: rgb(235, 235, 235);
 }
-.input-user > button:hover {filter: brightness(0.9);}
-.input-user input {height: 36px; padding: 0px 10px; outline: none;}
+.filterSelection > select {margin: 15px auto}
+.input-user > button:hover, .filterSelection > select {filter: brightness(0.9);}
+.input-user input, .filterSelection > select {height: 36px; padding: 0px 10px; outline: none;}
 
 .tasks{position: relative; width: 100%; margin: 30px auto; background-color: rgba(240, 240, 249, 0.8); border-radius: 15px;}
 .task{min-width: 450px; display: flex; justify-content: space-between; align-items: center; padding: 10px 10px; margin: 10px auto; border-radius: 5px;}

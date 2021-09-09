@@ -18,10 +18,18 @@
                 <input type="text" v-model="newTask" placeholder="Aggiungi una task" @keyUp.Enter="submitTask">
                 <button type="submit" @click="submitTask" >Submit</button>
             </div>
+            <div class="filterSelection">
+                Seleziona un filtro:
+                <select id="select-value" v-model="selectedStatus">
+                    <option value="all">Tutte</option>
+                    <option value="true">Completata</option>
+                    <option value="false">Da fare</option>
+                </select>
+            </div>
         </div>
         <div class="tasks">
             <ul id="tasks-list" v-if="(tasks.length > 0)">
-                <li v-for="(task, index) in tasks" class="task" v-bind:class="String(task.done)">
+                <li v-for="(task, index) in computed_tasks" class="task" v-bind:class="String(task.done)">
                     <span>
                         <span v-if="(task.done == false)" class="status-task"  @click="changeStatus(task, index)">
                             <i class="fas fa-check"></i>
@@ -29,7 +37,9 @@
                         <span v-else class="status-task">
                             <i class="fas fa-times"  @click="changeStatus(task, index)"></i>
                         </span>
-                        <span class="title-task" @click="changeStatus(task, index)">{{task.title.toUpperCase()}}</span>
+                        <span class="title-task" @click="changeStatus(task, index)">
+                            {{task.title.toUpperCase()}}
+                        </span>
                     </span>
                     <span class="delete" @click="removeTask(index)">DELETE</span>
                 </li>

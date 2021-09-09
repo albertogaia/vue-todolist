@@ -4,6 +4,7 @@ const app = new Vue({
     el: '#root',
     data: {
         newTask: '',
+        selectedStatus: '',
         tasks: [
             {
                 title: 'Fare spesa',
@@ -45,7 +46,36 @@ const app = new Vue({
             if(confirm('Sicuro/a di voler cancellare tutte le task?') == true){
                 this.tasks = [];
             }
-            
         }
     },
+    computed: {
+        computed_tasks: function() {
+            console.log(this.selectedStatus);
+            let selectionValue = this.selectedStatus;
+            // console.log(this.tasks);
+            let filteredList = [];
+            if(selectionValue == 'true'){
+                // this.tasks=[];
+                console.log(this.tasks)
+                filteredList = this.tasks.filter((task)=>{
+                    // console.log(filteredList)
+                    return task.done == true;
+                })
+            }else if(selectionValue == 'false'){
+                // this.tasks=[];
+                filteredList = this.tasks.filter((task)=>{
+                    return task.done == false;
+                })
+            }else{
+                return this.tasks
+            }
+
+            console.log(filteredList)
+            return filteredList;
+
+        }
+            
+          
+        
+    }
 })
