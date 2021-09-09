@@ -11,7 +11,7 @@
 <body>
     <div class="container" id="root">
         <div class="to-do-list">
-            <div class="img" @click="isDone">
+            <div class="img" @click="changeStatus">
                 <img src="https://www.boolean.careers/images/misc/logo.png" alt="Logo Boolean">
             </div>
             <div class="input-user">
@@ -21,7 +21,13 @@
         </div>
         <div class="tasks">
             <ul v-if="(tasks.length > 0)">
-                <li v-for="(task, index) in tasks" class="task"><span>{{task.done}} {{task.title.toUpperCase()}}</span><i class="fas fa-times" @click="removeTask(index)"></i>
+                <li v-for="(task, index) in tasks" class="task" v-bind:class="String(task.done)" @click="changeStatus(task, index)">
+                    <span>
+                        <span v-if="(task.done == false)" class="status-task">FALSO</span>
+                        <span v-else>VERO</span>
+                        <span class="title-task">{{task.title.toUpperCase()}}</span>
+                    </span>
+                        <i class="fas fa-times" @click="removeTask(index)"></i>
                 </li>
                 
             </ul>

@@ -9,6 +9,10 @@ const app = new Vue({
                 title: 'Fare spesa',
                 done: false,
             },
+            {
+                title: 'Fare compiti',
+                done: true,
+            },
         ],
     },
     methods: {
@@ -29,11 +33,10 @@ const app = new Vue({
             confirm('Sicuro di voler cancellare?')
             this.tasks.splice(i, 1);
         },
-        isDone(){
+        changeStatus(element, i){
             // this.tasks.done = true;
-            this.tasks.forEach(element => {
-                console.log(this.tasks[title])
-            });
+            console.log(this.tasks[i].done)
+            this.tasks[i].done = !this.tasks[i].done;
         }
     },
 })
