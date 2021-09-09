@@ -30,14 +30,22 @@ const app = new Vue({
             }
         },
         removeTask(i){
-            if(confirm('Sicuro di voler cancellare?') == true){
-                this.tasks.splice(i, 1)
-            }
+            this.tasks.splice(i, 1)
+            
         },
         changeStatus(element, i){
             // this.tasks.done = true;
             console.log(this.tasks[i].done)
             this.tasks[i].done = !this.tasks[i].done;
+        },
+        removeAllTasks(){
+            // let containerTaks = document.getElementById(container);
+
+            // containerTaks.innerHTML = ''
+            if(confirm('Sicuro/a di voler cancellare tutte le task?') == true){
+                this.tasks = [];
+            }
+            
         }
     },
 })
