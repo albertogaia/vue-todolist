@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
+    <title>To Do List</title>
+</head>
+<body>
+    <div class="container" id="root">
+        <div class="to-do-list">
+            <div class="img" @click="isDone">
+                <img src="https://www.boolean.careers/images/misc/logo.png" alt="Logo Boolean">
+            </div>
+            <div class="input-user">
+                <input type="text" v-model="newTask" placeholder="Aggiungi una task" @keyUp.Enter="submitTask">
+                <button type="submit" @click="submitTask" >Submit</button>
+            </div>
+        </div>
+        <div class="tasks">
+            <ul v-if="(tasks.length > 0)">
+                <li v-for="(task, index) in tasks" class="task"><span>{{task.done}} {{task.title.toUpperCase()}}</span><i class="fas fa-times" @click="removeTask(index)"></i>
+                </li>
+                
+            </ul>
+            <h2 v-else>Non ci sono elementi nella lista</h2>
+        </div>
+
+    </div>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
