@@ -11,7 +11,7 @@
 <body>
     <div class="container" id="root">
         <div class="to-do-list">
-            <div class="img" @click="changeStatus">
+            <div class="img">
                 <img src="https://www.boolean.careers/images/misc/logo.png" alt="Logo Boolean">
             </div>
             <div class="input-user">
@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="tasks">
-            <ul id="tasks-list" v-if="(tasks.length > 0)">
+            <ul id="tasks-list" v-if="(computed_tasks.length > 0)">
                 <li v-for="(task, index) in computed_tasks" class="task" v-bind:class="String(task.done)">
                     <span>
                         <span v-if="(task.done == false)" class="status-task"  @click="changeStatus(task, index)">
